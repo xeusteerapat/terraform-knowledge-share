@@ -14,6 +14,6 @@ module "cloudrun" {
   cpu              = var.cpu
   env_var_value    = var.env_var_value
   project_id       = var.project_id
-  invoker_identity = var.invoker_identity
+  invoker_identity = "allUsers"
 }
 

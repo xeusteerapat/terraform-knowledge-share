@@ -16,6 +16,7 @@ variable "image" {
 variable "container_port" {
   description = "The port on which the container listens"
   type        = number
+  default     = 8080
 }
 
 variable "memory" {

@@ -1,5 +1,5 @@
 resource "google_project_service" "run_api" {
-  service = "run.googleapis.com"
+  service            = "run.googleapis.com"
   disable_on_destroy = true
 }
 
@@ -36,9 +36,11 @@ resource "google_cloud_run_service" "default" {
   autogenerate_revision_name = true
 }
 
-resource "google_project_iam_member" "cloud_run_invoker" {
-  project = var.project_id
-  role    = "roles/run.invoker"
-  member  = var.invoker_identity
+resource "google_cloud_run_service_iam_member" "invoker" {
+  project  = var.project_id
+  location = var.region
+  service  = google_cloud_run_service.default.name
+  role     = "roles/run.invoker"
+  member   = "allUsers"
 }
 
